@@ -1,29 +1,78 @@
 #include <gmock/gmock.h>
 
-#include "../src/exampleclass.h"
+#include "../src/stralg.h"
+
+#include <string>
 
 using namespace testing;
 
-class AdderFix : public Test
+// class LevDistFix : public Test
+// {
+// public:
+//   std::string str1 = "Hello world!";
+//   std::string str2 = "Go";
+  
+//   //constructor
+//   // void SetUp() override
+//   // also Teardown fxn
+// };
+
+
+// TEST(LevensteinDistance, equality)
+// {
+//   ASSERT_EQ(LevDist(), 0);
+// }
+
+
+
+TEST(LevDist, Equality)
 {
-public:
-  Adder adder;
+  EXPECT_EQ(LevDist("Hello", "Hello"), 0);
+}
 
-  //constructor
-  // void SetUp() override
-  // also Teardown fxn
-};
-
-
-TEST(ExampleClass, Adder)
+TEST(LevDist, Inequality)
 {
-  Adder a;
-  ASSERT_EQ(a.AddOne(5), 6);
+  EXPECT_GT(LevDist("Hello", "Goodbye"), 0);
+}
+
+TEST(LevDist, Symmetry)
+{
+  EXPECT_EQ(LevDist("Group Theory", "Lagrangian"),
+	    LevDist("Lagrangian", "Group Theory"));
+}
+
+TEST(LevDist, Capitalization)
+{
+  EXPECT_EQ(LevDist("Group Theory", "group theory"), 2);
 }
 
 
-
-TEST_F(AdderFix, AddOne)
+TEST(LevDist, NullStrings)
 {
-  ASSERT_EQ(adder.AddOne(6), 7);
+  EXPECT_EQ(LevDist("", ""), 0);
+  EXPECT_EQ(LevDist("", "abc"), 3);
+  EXPECT_EQ(LevDist("1234", ""), 4);  
+}
+
+TEST(LevDist, SmallStrings)
+{
+  EXPECT_EQ(LevDist("ab", "a"), 1);
+  EXPECT_EQ(LevDist("ab", "b"), 1);
+  EXPECT_EQ(LevDist("ab", "c"), 2);
+  EXPECT_EQ(LevDist("abc", "ac"), 1);
+}
+
+TEST(LevDist, DeleteMiddle)
+{
+  EXPECT_EQ(LevDist("Hello", "Hlo"), 2);
+}
+
+TEST(LevDist, ChangeMiddle)
+{
+  EXPECT_EQ(LevDist("Hello", "Hallo"), 1);
+}
+
+TEST(LevDist, TotallyDifferent)
+{
+  EXPECT_EQ(LevDist("12345", "abc"), 5);
 }
