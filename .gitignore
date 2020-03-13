@@ -1,0 +1,5 @@
+*.exe
+main
+build
+test/runtests
+test/build
