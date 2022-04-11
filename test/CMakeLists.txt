@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 set (CMAKE_CXX_STANDARD 11)
 
 set (SRC_DIR "../src")
-set (SRC_FILES stralg.cpp)
+set (SRC_FILES string/edist.cpp)
 string(REGEX REPLACE "([^;]+)" "${SRC_DIR}/\\1" SRC_DIR_FILES "${SRC_FILES}")
 
 add_subdirectory(googletest)

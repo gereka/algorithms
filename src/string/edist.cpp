@@ -1,4 +1,4 @@
-#include "stralg.h"
+#include "edist.h"
 
 int min3(int x, int y, int z)
 {

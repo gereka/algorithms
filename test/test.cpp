@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 
-#include "../src/stralg.h"
+#include "../src/string/edist.h"
 
 #include <string>
 
