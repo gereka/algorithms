@@ -1,10 +1,9 @@
 #include <iostream>
 
-#include "exampleclass.h"
+#include "numeric/primes.h"
 
 int main()
 {
-  Adder a;
-  std::cout << "5 + 1 = " << a.AddOne(5) << std::endl;
+  Primes p;
   return 0;
 }

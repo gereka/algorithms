@@ -12,4 +12,6 @@ find_package(Threads REQUIRED)
 add_executable(pimc.exe src/numeric/pimc.cpp)
 target_link_libraries(pimc.exe PRIVATE Threads::Threads)
 
+add_executable(main.exe src/main.cpp src/numeric/primes.cpp)
+
 #target_link_libraries(graphdrawer names_of_libraries_here)
